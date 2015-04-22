@@ -1,5 +1,7 @@
 package ro.teamnet.hello;
 
+import junit.framework.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -8,17 +10,24 @@ import org.junit.Test;
  */
 public class HelloWorldTest {
 
+    HelloWorld hello;
+
+    @Before
+    public void init() {
+        System.out.println("Initializing fields...");
+        hello = new HelloWorld();
+    }
+
     @Test
     public void testSayHello() {
-        HelloWorld hello = new HelloWorld();
         hello.sayHello();
     }
 
     @Test
     public void testReturnHelloKey() {
-        HelloWorld helloWorld = new HelloWorld();
-        System.out.println("From Test: " + helloWorld.returnHelloKey());
-        assert helloWorld.returnHelloKey().equals("HelloKey");
+        System.out.println("From Test: " + hello.returnHelloKey());
+        Assert.assertNotNull(hello);
+        assert hello.returnHelloKey().equals("HelloKey");
     }
 
 
